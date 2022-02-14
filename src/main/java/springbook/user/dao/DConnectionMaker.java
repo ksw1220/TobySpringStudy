@@ -4,12 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DUserDao extends UserDao{
+public class DConnectionMaker implements SimpleConnectionMaker{
     @Override
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
+    public Connection makeNewConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/springbook?serverTimezone=Asia/Seoul", "root", "Aaaa123$");
-        // D사 코드
         return c;
     }
 }
